@@ -20,24 +20,24 @@ class Login(Webdriver):
         '''
         try:
             try:
-                self.email_box = self.driver.find_element(By.XPATH, '//*[@id="react-root"]/div/div/div/main/div/div/div/div[2]/div[2]/div[1]/div/div[5]/label/div/div[2]/div/input')
-            except:
-                self.email_box = self.driver.find_element(By.XPATH, '//*[@id="layers"]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[1]/div/div[5]/label/div/div[2]/div/input')
+                self.email_box = self.driver.find_element(By.XPATH, "//input[@autocomplete='username']")
+            except Exception as e:
+                print(e, "Unable to find the path for email")
             self.email_box.send_keys(userdetail.login_1.get_email())
             time.sleep(2)  
             self.email_box.send_keys(Keys.ENTER)
             time.sleep(2)
             try:
-                self.ph_no = self.driver.find_element(By.XPATH, '//*[@id="layers"]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[1]/div/div[2]/label/div/div[2]/div/input')
-            except:
-                self.ph_no = self.driver.find_element(By.XPATH, '//*[@id="react-root"]/div/div/div/main/div/div/div/div[2]/div[2]/div[1]/div/div[2]/label/div/div[2]/div/input')
+                self.ph_no = self.driver.find_element(By.XPATH, "//input[@name='text']")
+            except Exception as e:
+                print(e, 'Unable to find path for phone number')
             self.ph_no.send_keys(userdetail.login_1.get_phone())
             self.ph_no.send_keys(Keys.ENTER)
             time.sleep(3)
             try:
-                self.password_box = self.driver.find_element(By.XPATH, '//*[@id="react-root"]/div/div/div/main/div/div/div/div[2]/div[2]/div[1]/div/div[3]/div/label/div/div[2]/div[1]/input')   
-            except:
-                self.password_box = self.driver.find_element(By.XPATH, '//*[@id="layers"]/div/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[1]/div/div[3]/div/label/div/div[2]/div[1]/input')
+                self.password_box = self.driver.find_element(By.XPATH, "//input[@name='password']")  
+            except Exception as e:
+                print(e, "Unable to find path for password")     
             self.password_box.send_keys(userdetail.login_1.get_pasword())
             self.password_box.send_keys(Keys.ENTER)
             print('Login successfully')
